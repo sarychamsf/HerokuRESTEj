@@ -1,4 +1,3 @@
-import edu.co.sergio.mundo.dao.CreateDataBase;
 import java.io.File;
 import org.glassfish.embeddable.CommandResult;
 import org.glassfish.embeddable.CommandRunner;
@@ -8,12 +7,15 @@ import org.glassfish.embeddable.GlassFishProperties;
 import org.glassfish.embeddable.GlassFishRuntime;
 import org.glassfish.embeddable.archive.ScatteredArchive;
 
+/* Lanza navegador para correrlo en local */
+
 public class MainGlassfish {
 
 	public static void main(String[] args) throws Exception {
 	   String webappDirLocation = "src/main/webapp/";
 
 	// Look for that variable and default to 8080 if it isn't there.
+        // Se configura puerto.
 	String webPort = System.getenv("PORT");
 	if (webPort == null || webPort.isEmpty()) {
 	    webPort = "8090";
@@ -38,6 +40,7 @@ public class MainGlassfish {
         //Invocando el Script de Creacion de la base de datos.
       
 	// Create a scattered web application.
+        // Contexto Web sobre el puerto: http://localhost:8090/myApp/rest/hello/hola
 	ScatteredArchive archive = new ScatteredArchive("myApp",
 	ScatteredArchive.Type.WAR, new File(webappDirLocation));
         // target/classes directory contains my complied servlets
