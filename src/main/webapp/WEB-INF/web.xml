@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-    version="3.0">
+         xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0">
     <display-name>CrunchifyJSPServletExample</display-name>
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
@@ -17,21 +17,29 @@
     <servlet>
         <!--- Interceptar URL y busca servicio en el paquete -->
         <servlet-name>jersey-serlvet</servlet-name>
-	<servlet-class> com.sun.jersey.spi.container.servlet.ServletContainer   </servlet-class>
-	<init-param>
-	    <param-name>com.sun.jersey.config.property.packages</param-name>
-           <!--- paquete donde están los servicios  -->
-	    <param-value>com.mkyong.rest</param-value>
-      	</init-param>
-	<load-on-startup>1</load-on-startup>
+        <servlet-class> com.sun.jersey.spi.container.servlet.ServletContainer   </servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <!--- paquete donde están los servicios  -->
+            <param-value>com.mkyong.rest</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
         <!--- Envía todos las URL que empiecen por /rest al servlet de Jersey -->
-	<servlet-name>jersey-serlvet</servlet-name>
-	<url-pattern>/rest/*</url-pattern>
+        <servlet-name>jersey-serlvet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
 
+    <filter>
+        <filter-name>CorsFilter</filter-name>
+        <filter-class>com.ezakus.api.web.security.CORSFilter</filter-class>
+    </filter>
 
+    <filter-mapping>
+        <filter-name>CorsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 
 </web-app>
