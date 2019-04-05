@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+OBJETO QUE SE CONVIERTE EN OBJETO Y OBJETO EN JASON
  */
 package org.o7planning.restfulcrud.model;
  
@@ -9,7 +7,9 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
  
+// Cuando genera JSON esta es la etiqueta raíz.
 @XmlRootElement(name = "employee")
+// Todos los campos van a estar contenidos en el JSON.
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Employee {
  

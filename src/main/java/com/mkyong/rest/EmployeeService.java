@@ -14,12 +14,17 @@ import javax.ws.rs.core.MediaType;
 import org.o7planning.restfulcrud.dao.EmployeeDAO;
 import org.o7planning.restfulcrud.model.Employee;
  
+// SIMULA DAO.
+
+
+// Ruta de acceso.
 @Path("/employees")
 public class EmployeeService {
  
     // URI:
     // /contextPath/servletPath/employees
     @GET
+    // Producir información.
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
     public List<Employee> getEmployees_JSON() {
         List<Employee> listOfCountries = EmployeeDAO.getAllEmployees();

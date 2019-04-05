@@ -15,16 +15,19 @@
    
     
     <servlet>
+        <!--- Interceptar URL y busca servicio en el paquete -->
         <servlet-name>jersey-serlvet</servlet-name>
 	<servlet-class> com.sun.jersey.spi.container.servlet.ServletContainer   </servlet-class>
 	<init-param>
 	    <param-name>com.sun.jersey.config.property.packages</param-name>
+           <!--- paquete donde están los servicios  -->
 	    <param-value>com.mkyong.rest</param-value>
       	</init-param>
 	<load-on-startup>1</load-on-startup>
     </servlet>
 
     <servlet-mapping>
+        <!--- Envía todos las URL que empiecen por /rest al servlet de Jersey -->
 	<servlet-name>jersey-serlvet</servlet-name>
 	<url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
